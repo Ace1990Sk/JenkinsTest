@@ -8,4 +8,10 @@ public class TestTest {
     step("Все работает", () -> {
     });
   }
+
+  @Test
+  void testone() {
+    step("Не должен работать", () -> {
+    });
+  }
 }

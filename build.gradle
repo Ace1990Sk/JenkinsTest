@@ -16,15 +16,10 @@ dependencies {
     implementation group: 'org.testng', name: 'testng', version: '7.4.0'
     testImplementation 'io.qameta.allure:allure-testng:2.24.0'
 }
-def hasSuitePath = project.hasProperty("suitepath")
+ext.testFile = System.getProperty('suitePath')
+
 test {
-    useTestNG(){
-        dependsOn cleanTest
-        ignoreFailures = true
-        if( hasSuitePath ){
-            def suitepath = project.property("suitepath")
-            suites "src\\test\\resources\\${suitepath}"
-        }
+    useTestNG {
+        suites "src/test/resources/$testFile"
     }
-    systemProperties(System.getProperties())
 }
